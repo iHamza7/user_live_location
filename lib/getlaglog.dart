@@ -67,6 +67,31 @@ class _GetLagLatState extends State<GetLagLat> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0D39F2),
+        centerTitle: true,
+        title: const Text("Get Location"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text("Lat : $lat"),
+            Text("Long : $long"),
+            Text("Address : $address "),
+            ElevatedButton(
+              onPressed: getLatLong,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF0D39F2),
+              ),
+              child: const Text("Get Location"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
