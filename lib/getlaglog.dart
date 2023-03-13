@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GetLagLat extends StatefulWidget {
@@ -59,10 +60,21 @@ class _GetLagLatState extends State<GetLagLat> {
         long = value.longitude;
       });
 
-      // getAddress(value.latitude, value.longitude);
+      getAddress(value.latitude, value.longitude);
     }).catchError((error) {
       debugPrint("Error $error");
     });
+  }
+
+  getAddress(lat, long) async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
+    setState(() {
+      address = "${placemarks[0].street!} ${placemarks[0].country!}";
+    });
+
+    for (int i = 0; i < placemarks.length; i++) {
+      debugPrint("INDEX $i ${placemarks[i]}");
+    }
   }
 
   @override
