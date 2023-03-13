@@ -8,6 +8,10 @@ class GetLagLat extends StatefulWidget {
 }
 
 class _GetLagLatState extends State<GetLagLat> {
+  double? lat;
+  double? long;
+  String address = '';
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
