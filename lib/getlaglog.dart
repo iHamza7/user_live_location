@@ -50,6 +50,21 @@ class _GetLagLatState extends State<GetLagLat> {
         desiredAccuracy: LocationAccuracy.high);
   }
 
+  getLatLong() {
+    Future<Position> data = _determinePosition();
+    data.then((value) {
+      debugPrint("value $value");
+      setState(() {
+        lat = value.latitude;
+        long = value.longitude;
+      });
+
+      // getAddress(value.latitude, value.longitude);
+    }).catchError((error) {
+      debugPrint("Error $error");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
